@@ -29,11 +29,11 @@ response.json(data)
 })
 
 app.post("/cadastrar", (request, response) => {
-const { titulo, artista, genero, ano, duracao } = request.body
+const { titulo, artista, genero, ano, duracao, spotify } = request.body
 
-const comandoInsert = "INSERT INTO musicas_nickolas(titulo, artista, genero, ano, duracao) VALUES (?, ?, ?, ?, ?)"
+const comandoInsert = "INSERT INTO musicas_nickolas(titulo, artista, genero, ano, duracao, spotify) VALUES (?, ?, ?, ?, ?, ?)"
 
-sql.query(comandoInsert, [titulo, artista, genero, ano, duracao], (error) => {
+sql.query(comandoInsert, [titulo, artista, genero, ano, duracao, spotify], (error) => {
 if (error) {
 console.log(error)
 return
@@ -75,11 +75,11 @@ response.json(data[0])
 
 app.put("/editar/:id", (request, response) => {
 const { id } = request.params
-const { titulo, artista, genero, ano, duracao } = request.body
+const { titulo, artista, genero, ano, duracao, spotify } = request.body
 
-const comandoUpdate = "UPDATE musicas_nickolas SET titulo = ?, artista = ?, genero = ?, ano = ?, duracao = ? WHERE id = ?"
+const comandoUpdate = "UPDATE musicas_nickolas SET titulo = ?, artista = ?, genero = ?, ano = ?, duracao = ?, spotify = ? WHERE id = ?"
 
-sql.query(comandoUpdate, [titulo, artista, genero, ano, duracao, id], (error) => {
+sql.query(comandoUpdate, [titulo, artista, genero, ano, duracao, spotify, id], (error) => {
 if (error) {
 console.log(error)
 return
